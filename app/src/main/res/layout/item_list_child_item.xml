@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="childItemList"
+            type="com.example.musicapp.model.Index" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:background="@color/black">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivItem"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/curvedImage" />
+
+        <TextView
+            android:id="@+id/tvOwned"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-110dp"
+            android:background="@color/gray"
+            android:paddingHorizontal="50dp"
+            android:paddingVertical="10dp"
+            android:layout_marginTop="-70dp"
+            android:rotation="300"
+            android:text="owned"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:visibility="@{childItemList.owned == 1 ? View.VISIBLE : View.GONE}"
+            app:layout_constraintStart_toStartOf="@+id/ivItem"
+            app:layout_constraintTop_toTopOf="@+id/ivItem" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="@{childItemList.title}"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivItem"
+            tools:text="music" />
+
+        <TextView
+            android:id="@+id/tvComposer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@{childItemList.educator}"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            tools:text="music" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
